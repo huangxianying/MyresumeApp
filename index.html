@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ionic项目</title>
+    <link rel="stylesheet" href="www/lib/ionic/css/ionic.css">
+    <link rel="stylesheet" href="www/css/resume.css">
+    <script src="www/lib/ionic/js/ionic.bundle.js"></script>
+    <script>
+        ;(function(){
+            angular.module('myApp',['ionic'])
+
+            // 创建控制器
+            .controller('myCtrl',[
+              '$scope',
+              '$ionicSlideBoxDelegate',
+              function($scope,$ionicSlideBoxDelegate){
+                  $scope.nextSlide = function(){
+                    $ionicSlideBoxDelegate.next();
+                    $ionicSlideBoxDelegate.enableSlide([true]);
+                  }
+                  $scope.openHtml = function(){
+                    location.href='www/html/content.html'
+                  }
+              }
+              ])
+        })();
+    </script>
+</head>
+<body ng-controller="myCtrl">
+      <ion-slide-box ng-click='nextSlide()' class="slideImg">
+      <ion-slide>
+        <img src="www/img/yy_1.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="www/img/yy_5.jpg">
+      </ion-slide>
+      <ion-slide on-slide-changed="slideHasChanged(index)" class='lastImg'>
+        <img src="www/img/yy_7.jpg">
+        <button class="button button-calm checkbtn" ng-click='openHtml()'>MyResume</button>
+      </ion-slide>
+      </ion-slide-box>
+</body>
+</html>
