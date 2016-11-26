@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>resume</title>
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <link rel="stylesheet" href="css/resume.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+<body ng-controller="myCtrl">
+      <ion-slide-box ng-click='nextSlide()' class="slideImg">
+      <ion-slide class="bg-img">
+        <img src="img/yy_1.jpg" class="img-responsive">
+      </ion-slide>
+      <ion-slide class="bg-img1">
+         <img src="img/yy_1.jpg" class="img-responsive">
+      </ion-slide>
+      <ion-slide on-slide-changed="slideHasChanged(index)" class='lastImg bg-img2'>
+         <img src="img/yy_1.jpg" class="img-responsive">
+        <button class="button button-calm checkbtn" ng-click='openHtml()'>MyResume</button>
+      </ion-slide>
+      </ion-slide-box>
+</body>
+</html>

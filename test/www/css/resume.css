@@ -1,0 +1,41 @@
+/*index*/
+html{font-size:62.5%}
+
+.slideImg{width: 375px;height: 667px;}
+/*.slideImg img{width: 100%;height: 100%};*/
+/*.bg-img{background: url(../img/indexImg.png) no-repeat;background-size: contain; }*/
+.bg-img{-webkit-border-image: url(../img/indexImg.png) 0% 30% 0% 0% round;
+        -moz--webkit-border-image: url(../img/indexImg.png) 0% 30% 0% 0% round;
+        background:url(../img/benpao.png) no-repeat; background-size: 30%;
+        background-position: 50% 90%;}
+.bg-img1{-webkit-border-image: url(../img/indexImg.png) 0% 0% 0% 70% round;
+        -moz--webkit-border-image: url(../img/indexImg.png) 0% 0% 0% 70% round;
+        background:url(../img/benpao.png) no-repeat; background-size: 30%;
+        background-position: 50% 90%;}
+.bg-img2{-webkit-border-image: url(../img/indexImg.png) 0% 30% 0% 6% round;
+        -moz--webkit-border-image: url(../img/indexImg.png) 0% 30% 0% 6% round;
+        position: relative;}
+.lastImg{position: relative;}
+/*.lastImg .checkbtn{position: absolute;top: 80%;left: 75%;margin-left: -30px;background-color:#ccc;background:url(../img/18762-NS5FJ7.jpg) no-repeat;background-position: 1rem 3rem; }*/
+.bg-btn{width: 10rem;height: 10rem;background:url(../img/benpao.png) no-repeat; background-size: 90%;position: absolute;top: 76%;left: 55%;margin-left: -5rem;
+    animation:show 3s infinite ease-in-out;
+    -webkit-animation:show 3s infinite ease-in-out;
+    -o-animation:show 3s infinite ease-in-out;
+    -moz-animation:show 3s infinite ease-in-out;}
+@keyframes show{
+    0%,100%{
+        transform:scale(0.6);
+        -webkit-transform:scale(0.6);
+        -o-transform:scale(0.6);
+        -moz-transform:scale(0.6);
+
+        opacity:.8
+    }
+    50%{
+        transform:scale(0.8);
+        -webkit-transform:scale(0.8);
+        -o-transform:scale(0.8);
+        -moz-transform:scale(0.8);
+        opacity: 1;
+    }
+}

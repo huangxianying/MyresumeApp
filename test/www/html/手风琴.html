@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/ionic/js/ionic.bundle.js"></script>
+    <script>
+        ;(function(){
+            angular.module('myApp',[])
+            .controller('showContrl',[
+                '$scope',
+                function($scope){
+                  $scope.expanders = [{
+                    title : 'Click me to expand',
+                    text : 'Hi there folks, I am the content that was hidden but is now shown.'
+                  }, {
+                    title : 'Click this',
+                    text : 'I am even better text than you have seen previously'
+                  }, {
+                    title : 'Test',
+                    text : 'test'
+                  }];
+                }
+                ])
+            .directive('accordion',function(){
+              return {
+                  restrict : 'EA',
+                  replace : true,
+                  transclude : true,
+                  template : '<div ng-transclude></div>',
+                  controller : function() {
+                      var expanders = [];
+                      this.gotOpened = function(selectedExpander) {
+                          angular.forEach(expanders, function(expander) {
+                              if (selectedExpander != expander) {
+                                  expander.showMe = false;
+                              }
+                          });
+                      };
+                      this.addExpander = function(expander) {
+                          expanders.push(expander);
+                      };
+                  }
+              };
+          })
+
+
+           .directive('expander', function(){
+              return {
+                  restrict : 'EA',
+                  replace : true,
+                  transclude : true,
+                  require : '^?accordion',
+                  scope : {
+                      expanderTitle : '='
+                  },
+                  template : '<div>'
+                  + '<div class="ex-title" ng-click="toggle()">{{expanderTitle}}</div>'
+                  + '<div class="ex-body" ng-show="showMe" ng-transclude></div>'
+                  + '</div>',
+                  link : function(scope, iElement, iAttrs, accordionController) {
+                      scope.showMe = false;
+                      accordionController.addExpander(scope);
+                      scope.toggle = function toggle() {
+                          scope.showMe = !scope.showMe;
+                          accordionController.gotOpened(scope);
+                      };
+                  }
+              };
+          });
+        })()
+    </script>
+</head>
+<body ng-controller='showContrl'>
+  <accordion>
+      <expander class='expander' ng-repeat='expander in expanders' expander-title='expander.title'>
+          {{expander.text}}
+      </expander>
+  </accordion>
+</body>
+</html>
